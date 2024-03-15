@@ -1,0 +1,710 @@
+-- Terra Changelog --
+
+1.0: Release Time!
+- Initial release (8191 tokens)
+
+1.1: Fixing Of Bugs!
+- Read some feedback
+- Reduced respawn cooldown and made mobs despawn instantly upon dying
+- Optimised player collisions for tokens and maybe a minor performance boost?
+- Moved selected item text above player's head to be more obvious
+- Optimised recipe list for tokens using split (8097 tokens)
+- Moved some stuff around
+- Made generation text use the centre print function instead of doing it manually there (8084 tokens)
+- Added ability to play night music in forest biome
+- Made increased spawns while moving only work underground
+- Reduced spawn rates as count approaches cap
+- Fixed walls not being blocks
+- Added wooden door, grey brick, and red brick (8188 tokens)
+- Made ranged attacks prioritise aiming towards bosses if they're alive and in line of sight (8169 tokens)
+- Nerfed bosses slightly due to lack of armour/accessories
+- Reduced gravity effect on arrows and increased their velocity slightly
+- Added dropped health pickups from enemies and the Eye Of Cthulhu's servants (8189 tokens)
+- oops i broke the inventory, it's off the screen now
+- ok i fixed the inventory, it's on the screen now
+- Reduced tokens some more (8180 tokens)
+- Made respawning happen when the player presses a button instead of after a timer
+- Changed mob despawn range into a circle instead of a square (8163 tokens)
+
+1.1b: EoC Fix
+- EoC's servants had their drop item set as their defence, which caused a crash when attacking them
+
+1.1c: A few fixes
+- Can now place tiles that need support (workbench, torch) on top of platforms.
+- Hopefully fixed a crash related to items with missing stats
+
+1.2: Trash, balance and bugfixes
+- Fixed the Eye of Cthulhu servants' drops (for real this time)
+- Reduced mob cap to 8 (from 16)
+- Made bosses able to spawn even if the mob cap is reached (8183 tokens)
+- Added ❎ to delete selected item in inventory (8192 tokens)
+- reducing tokens in worldgen...
+- Modified corruption generation (8117 tokens) (it does usually take longer, but i needed to save tokens)
+- Added trash slot, trash selected item with ❎ and recover trashed item with ➡️ (8154 tokens)
+- Fixed crashes with empty inventory (8185 tokens)
+
+1.2.1: More bugfixes
+- Fixed grey and red bricks dropping barriers
+- Fixed crash when placing a picked up item into an empty inventory
+- Demonite bars now need a furnace to craft
+- Reduced tokens by moving a few items into data strings that weren't already
+- Reverted a token saving change that broke surface cave generation. Now you shouldn't spawn in a rectangular hole in the ground anymore (8186 tokens)
+- Doors now break when the tile below them is broken
+- Applied token-saving techniques elsewhere (8163 tokens)
+- Made the secret boss bigger and added its second phase sprites
+- Fixed a bug where hitting a tree with a hammer caused the game to freeze. Caused by a leftover sprite flag from early on in development.
+- Added sound effect for magic mirror (8166 tokens)
+
+1.2.1b: Shadow orb fix
+- Shadow orbs now drop items in order properly, i had put the current item counter where ANY wall would trigger it, instead of just shadow orbs.
+
+1.2.2: Music update!
+- Added music by @jo560hs
+- Replaced the death sound with the enemy hit sound and removed an unused sound to save sfx slots
+- Made items able to land on platforms
+
+1.2.3: Walls and bugfixes
+- Added automatic background walls behind certain tiles when they are next to one for a nicer look in houses. (mostly furniture)
+- Reworked the BIGMAP() function to peek the camera coordinates, and merged it into the draw loop.
+- Due to the above 2 changes, blocks now also display in front of tree leaves.
+- Fixed anvils being unbreakable outside of destroying the tile beneath them.
+- Fixed the boss music continuing to play after the boss is defeated or despawns until touching a biome tile. (8170 tokens)
+- Added the campfire as an alternate light source. (doesn't provide campfire buff)
+
+1.2.4: Ammo and WORLD SAVING preparation update! (Alternatively, the "How am I still under the limits!?" update)
+- Removed ADDPROJECTILE function to save tokens, since it was only used in one spot. (8148 tokens)
+- Added support for different arrow/bullet types for bows and guns. Put the ammo you want to use closest to the top of your inventory bar. (8158 tokens)
+- Moved layer heights upwards slightly to add a tiny bit more underground space, and to prepare for PICO-8 0.2.4's memory offset features. (which will change the map dimensions slightly)
+- Reduced furnace stone requirement from 20 to 10.
+- Made the selected recipe reset to the top upon closing the inventory.
+- Prevented changing to the crafting side of the inventory if there are no recipes available. (8170 tokens)
+- Added some new ammo types, including INFINITE AMMO!!!
+- Copper tools are now wooden tools since copper doesn't exist.
+- Added recipes for wooden tools for if you accidentally trash all of your tools somehow.
+- Added sound effect for shooting ranged weapons and did some more token optimisations.
+- Replaced fired bullets with that iconic orange line that Terrarian guns fire. (8171 tokens)
+- This update also marks return of the DEATH SOUND!!!
+- Found some more token optimisations. (8163 tokens)
+- Fixed a bug where the music would change back to the biome music while fighting a boss if the inventory is open.
+- Adjusted how distance and depth light levels are calculated to be a LOT more token efficient. (8102 tokens)
+- Moved the tree trunk sprites to make the next change more possible:
+- Added functionality for saving and loading players and worlds! (the currently unused functions take 92 tokens)
+  - (Currently disabled due to token limits, will enable it if possible after PICO-8 0.2.4 is released)
+
+1.3: 0.2.4 BIGMAP() and saving update!
+- Added autoswing capability for melee weapons. (put "autoswing" into an melee weapon's toolstat "value" to enable it)
+- Reached 8192 tokens while adding a barebones modes system.
+- Saved more tokens in world generation. (8130 tokens)
+- Night's Edge now has autoswing.
+- Added a title screen and menu system, complete with a rotatey logo! (8192 tokens)
+- Allowed grass in front of walls at worldgen to free some tokens, and some other token optimisations. (8178 tokens)
+- Waiting for PICO-8 0.2.4...
+- Implemented 0.2.4's BIG MAP! (i finally saw the token count dip below 8000!)
+- World size is now 256x128, instead of 252x136.
+- Saving and loading are now things that exist! (8191 tokens, just like the original version)
+  - The pause menu can be brought up by holding the pause button, where there will be an option to save.
+  - When saving, the player, then the world will be copied to the clipboard. Paste these into an empty text file each to save them!
+  - When loading, simply drag and drop each file onto Terra when it asks and it will load them for you.
+  - Just a note, Terra does not check if the file has valid data before loading it due to token limits, so it will blindly load whatever you put into it. This shouldn't break too much, but try to stick to loading what Terra outputs :)
+- For some reason the token count is now 8186, *what did i do?*
+- Fixed player falling out of the world. (due to using MGET() now instead of the BGET() function i had made that automatically made anything outside the map solid) (8191 tokens)
+- Optimised tokens in worldgen by hardcoding the world size variables, since it's not going to change. (8165 tokens)
+- Added a background for the world and title screen to make the world look that little bit nicer. Now we got PARALLAX! (8191 tokens)
+- Rebalanced shadow orb loot. Now the order is: Bow, Mirror, then Musket and the damage output of the ranged weapons has been reduced slightly.
+- Other rebalancing changes.
+- Added Wand Of Sparking as a ranged weapon that consumes gel as ammo, crafted at a workbench with wood and torches.
+
+1.3.1: Plantera update! (That's a lotta -damage- patch notes!)
+- Just a note, I have to be very careful with what I change from now on now that save files exist. Don't want to break them or change people's inventories!
+- Merged King Slime's ninja with his body sprite to save a sprite slot and some tokens. (8174 tokens)
+- Modified how autoswing is applied to weapons to allow ranged weapons to also have autoswing and optimised item update code for tokens. (8164 tokens)
+- Increase drop rates of gel and added a drop for some enemies that didn't have one.
+- Added some new weapons: Blade of Grass, Minishark, and Flamethrower. Also added some healing items. (8168 tokens)
+- Modified progression into 2 sections: before and after the secret boss.
+- Fixed some recipes that broke due to changing the shadow orb loot order.
+- Fixed a consumable items duplication bug that was introduced with the 1.2 trashing items update.
+- Made Eye of Cthulhu actually leave at daytime again, it seems I forgot to re-enable it after testing at some point. (saved 2 tokens)
+- Saved a bunch of tokens in the AI section. (8120 tokens)
+- Removed timer-based mob despawning, leaving only distance based despawning. (8092 tokens)
+- Moved more mob stat constants to the mob strings to save more tokens. (AAAAA it's less than 8000 again what's happening!?)
+- Added Plantera, bringing the total amount of bosses to 4. Craft her summon at the new Cursed Forge crafting station using the seeds dropped by Jungle Bats. (8190 tokens)
+- Some bosses now need to be summoned in a specific biome. (Implemented by checking what music is playing) (8191 tokens)
+- Now that he's actually important to progression, I've decided that he shouldn't be a secret anymore. The secret boss is Ocram, from the pre-1.3 versions of non-PC Terraria!
+- Optimised more tokens and fixed a bug where mobs with zero knockback (e.g. bosses) had their velocity set to zero when hit by a projectile.
+- Added randomness to mob drops. They now randomly drop one more or less of their drop, except for bosses. (8179 tokens)
+- Dogblaster is no longer craftable, it is now obtained from Plantera and is an endgame weapon, as it should be. It is the Dogblaster, after all.
+- Haha, Plantera's seeds redirect towards the player whenever she is hit. That makes it a bit harder to, you know, not die. Caused by not resetting the HIT variable if this mob is an enemy projectile.
+- Added a different mob cap for EoC and Ocram's servants, now there is a limit of 8 mobs plus 4 extra that can only be servants, just so that they can still be a threat when the cap is reached. (8185 tokens)
+- Menu screen now progresses as (player, world) instead of (title, player, world) to save tokens. Also removes the button press required before being able to load saves. (8168 tokens)
+- Fixed crafting recipes not being updated on trashing or recovering an item. (8172 tokens)
+- Discovered and removed an AI that became unused after moving the mobs into strings. (8112 tokens AAAAAAAA)
+- Fixed King slime so he actually gets faster as was intended, the only thing in the way was a variable that was wrong.
+- Collision code and various "magic number" optimisations. How is there still stuff to do? (8067 tokens)
+- Buffed Ocram. Now he is more like his original self, shooting lasers and all that. (Just the lasers) (8105 tokens)
+- Started adding Plantera's tentacles...
+- Optimised tokens in the enemy-player angle calculations.
+- Enemies no longer have gap assist like the player does, to save tokens. (8125 tokens)
+- Plantera's second phase now has the tentacles. (8192 tokens, 100.38% compressed size)
+- Fixed bullets having gravity. (8192 tokens, 100.48% compressed size)
+- Fixed the recipe for silver bullets. They needed something like 60 silver bars before.
+
+Final stat counts: 8192 tokens, 42234/65535 chars, 99.56% compressed size
+
+1.3.2: Many a fix, and some new stuff (Thanks to @Sup3raw3som3gam3r)
+(Sup3raw3som3gam3r's modifications)
+- Mob strings combined into one string.
+- Palette swap for Jungle Bat.
+- Added Terra Blade and Golden Seed.
+(cubee)
+- Optimised compressed size.
+- Modified MGET to handle tiles outside the map the same way BGET used to. Now the world edges function as they did before 1.3. (8205 tokens)
+- Simplified flying AI to use "face player" rather than "turn towards player". (8156 tokens) Honestly, I don't see much of a difference, and at least it works again.
+- Added palette swapping for mobs, now 4 sprites that were used for slimes are free. (4 sprites, 8149 tokens)
+- Added Gel Pack, an endless variant of gel. (only usable as ammo)
+- Changed the trash slot sprite to a palette swap of the inventory slot sprite to get 2 more sprite spaces (6 sprites, 8162 tokens)
+- Added a mass crafting feature to the crafting system: hold Z/O to keep crafting the same item until you release or run out of materials. (8182 tokens)
+- You can now hold the up or down buttons to scroll the inventory and crafting bars.
+- Prevented Ocram from being summoned during the day. (8192 tokens)
+- Plantera now drops a Golden Seed, used to craft the Terra Blade and... a dog gun?
+- Fixed mass crafting related performance issues in the inventory.
+- Adjusted position of inventory item text to be more in the centre. (still 8192 tokens)
+- Projectiles now use a sprite defined in the ammo's USETIME parameter. Flaming arrows now look like flaming arrows! (toggling if ammo is consumable is now handled by AUTOSWING) (8185 tokens)
+- Enemies can no longer randomly drop one extra item, but they can still drop one less. (8183 tokens)
+- Fixed blue slimes being automatically angry upon spawning.
+- Added Cochineal Beetle and Lac Beetle enemies that drop Beetle Husks.
+- Added 2 repeaters: Demonite Repeater obtainable after EoC, and Beetle Bow obtainable after Ocram.
+- Fixed potions not being consumable when the player had 400 max health. (8189 tokens)
+- Potion recipe now uses 2 Mushrooms and a Beetle Husk instead of 2 Mushrooms and 2 Gel.
+- Reduced the amount of Plantera's tentacles slightly.
+- Prevented auto-aim from aiming at enemy projectiles. (8190 tokens)
+
+Final final stat counts: 8190 tokens, 42569/65535 chars, 99.34% compressed size
+
+1.3.2b: Return of the bugfix letters.
+- Fixed EoC's servants being Plantera due to an oversight in the mob string translations.
+- Bats, Slimes, and Beetles are no longer invisible due to width/height being zero.
+- Fixed BTNP() repeat causing all items to have technically autoswing after the 1.3.2 update.
+- Removed a function that was used in only one spot. (8185 tokens)
+
+Stat counts: 8185 tokens, 42540/65535 chars, 99.34% compressed size
+
+1.3.2c: Block bug fixes
+- Added a secret feature. (Please don't spoil it if you figure it out)
+- This does include a minor save file format change, however, it appears to be compatible with existing saves.
+- Fixed blocks having no autoswing.
+- Reverted a change that made blocks lose their fast placement speed, making building incredibly hard to do.
+- Various token optimisations.
+
+Stat counts: 8183 tokens, 42618/65535 chars, 99.46% compressed size
+
+1.3.3: Some world generation changes
+- A slight update to the secret feature. This includes another minor save file format change, but it's still compatible with existing saves.
+- The player now respawns with half health to prevent "death healing".
+- Caves can now go off the edge of the map, meaning that there should no longer be lines of emptiness at the world edges.
+- Fixed a bug where the world would only generate one surface cave, and they can now also generate in the corruption. (8192 tokens)
+- Generation order modified so corrupt chasms generate after surface caves.
+- The Jungle and Corruption now generate all the way to the edges of the world on their respective sides.
+
+Stat counts: 8192 tokens, 42510/65535 chars, 99.42% compressed size
+
+1.3.3b: Bugfixes! Again! Yay!
+- Fixed a bug where having a tree trunk without a stump below it would freeze the game. (Found via Sup3rAw3som3Gam3r's TEdit cart, not reproduceable in normal gameplay)
+- Player respawns with a minimum of 100HP like in Terraria
+
+1.3.3c: Sort of giving in to multicart; the Custom Character Cart!
+- The secret feature from recent updates is the ability to load custom character sprites!
+  - Use the Character Creator cart to generate a new save file with the sprite data for your character!
+  - You can also use any sprite you want, just copy a 7x1 section of sprites and paste the GFX portion of it between the last two pipes in the save. (|)
+- Re-added the higher pitched hurt sound, and added a new lower pitched hurt sound. (Both only accessible via the Character Creator)
+- The Main Cart is still completely standalone, ignoring the Character Creator will just leave you with the default Terra Guy as before.
+- Equally, the Character Creator is also standalone compatible, allowing you to simply create characters and not play as them if that's your thing.
+
+1.3.4: Gotta go fast to fix those bugs.
+- AKA The update you definitely didn't see coming because it's GOING TOO FAST!
+- Saved some tokens in worldgen.
+- Changed the mob spawning timer to take less tokens. (8161 tokens)
+- Fixed a bug where summoning King Slime would reset the player's sprites to Terra Guy until reloading the save. (8174 tokens)
+- The game will no longer crash when you trash your entire inventory. (8182 tokens)
+- Saved some more tokens in worldgen.
+- Added Hermes Boots! They function from the inventory and increase your max speed! Craft them with 10 Leafy Seeds and 2 Demonite Bars at an anvil. (8177 tokens)
+- The walls in the Corruption are now actually dirt walls, instead of the temporary Worldgen Corruption walls. (8187 tokens)
+- Added a table, a decorative tile for building.
+
+1.3.4b: Some bug fixes.
+- Fixed the ebonstone and ebonstone wall recipes using corruption dirt and tables. (tables used to be corruption dirt walls)
+- Fixed Plantera's second phase crashing the game. For some reason I had removed the variable the tentacles used to find their Plantera (8192 tokens)
+
+Stat counts: 8192 tokens, 42676/65535 chars, 100% compressed size (it just barely fits, doesn't it?)
+
+1.3.5: Plantera buff and craftable grass
+- The three grass types are now craftable using dirt or mud and leafy seeds, with corrupt grass using rotten chunks instead.
+- Beetle Bow is now craftable, as it no longer uses itself in its recipe. 
+- Plantera now continues to shoot seeds at a slower rate in her second phase.
+- Plantera's tentacles rotate slightly faster now, so they can block shots more effectively.
+
+Stat counts: 8190/8192 tokens, 42692/65535 chars, 100% compressed size
+
+1.4: Journey's End?
+- King Slime is now only summonable in the Forest during the Day to prevent summoning him while Plantera is alive, as his sprite overwrites hers.
+- Saved 5 tokens in Plantera's phase 2 palette swap.
+- Added the ability to paste save file strings to load them. (around 8244 tokens, forgot to record it)
+- MASSIVELY optimised tokens in the mob spawning lists by replacing them with a function. (8149 tokens)
+- Doors now play a sound when opened or closed (8159 tokens)
+- The title screen logo now rotates slower, not that that's really important.
+- Mobs can now have multiple drops. Later drops are more likely to drop less, except those dropped by bosses. (8177 tokens)
+- Ocram now drops Demonite Bars in addition to his Soul of Blight, to make re-fights at least worth something.
+- Skeletons now sometimes drop an iron bar, and they should now drop less arrows on average.
+- King Slime now drops small portions of all three minable ores instead of just a heap of gold.
+- Certain slimes now carry a bonus drop specific to that slime type.
+- The Demon Eyes' AI has been adjusted to make them more accurate. (8179 tokens)
+- Added new variants for Hornets (Honey, Leafy), Skeletons (Pantless, Headache), Demon Eyes (Cataract, Green), Zombies (Twiggy, Bald, Female), and Beetles (Cyan Beetle) via palette swapping. (Compressed Size go Bye Bye)
+- Technically there are now 24 enemies, though most of them are variations of existing enemies.
+- Found and removed some code in the tile breaking section that has been unused since the item string format was implemented. (8164 tokens)
+- Moved door interactions and tree generation into functions to save tokens.
+- Added saplings to grow trees. (8189 tokens)
+- Black Slimes now use the same slime sprites as Blue Slimes, because they're supposed to be smaller than yellow slimes.
+- Fixed a memory leak that would occur due to the lights list not being cleared while the inventory was open.
+- Beetle Bow now uses 5 Beetle Husks instead of 10.
+- Wall and Grass recipes have been moved to be near the bottom of the recipe list.
+- Vertical crafting station reach reduced to match Terraria's better.
+- Reduced the amount of tile checks in the enemy line of sight check to hopefully improve performance a bit.
+- Completely disabled line of sight and distance checks for enemy projectiles. (8190 tokens)
+- Saved some tokens in the camera position limiting code.
+- Ocram now moves to his second phase earlier and shoots lasers less rapidly.
+- Eye of Cthulhu and Ocram now stop moving while they transition to their second phases. (8191 tokens)
+
+Stat counts: 8191/8192 tokens, 42028/65535 chars, 99.9% compressed size
+
+1.4.1: Finally, MOUSE SUPPORT! How does it fit? No clue!
+- We have officially entered the realm of extreme token saving wizardry. (i.e. using incomplete compound variable assignment to set multiple values to nil, to be treated as false. Yeah. I've gone THAT far)
+- Added an option to toggle mouse controls in the in-game pause menu!
+   - Move with ESDF, and jump with the right mouse button.
+   - The inventory is still controlled by the keyboard as usual.
+   - Tools and block placement have limited range, but ranged weapons can be aimed freely!
+   - You can swap items using the scroll wheel, and as originally suggested by "oh lord he bacc", toggle the inventory by clicking it.
+- The annoying "CTRL+C TO COMPLETE COPY" prompt while running on the BBS should now no longer appear while loading save files. (Thanks @shy for the workaround!)
+- Modified cave generation. There should no longer be a massive hole along the bottom of the world. (Apparently I broke it in 1.3, ha)
+- Slowed down random tree tick slightly.
+- Removed a check for flag zero in the biome music code that served no purpose as all of the valid IDs have that flag set anyway.
+- Item collisions have been simplified to save tokens.
+- Removed item drop override check for wall tile drops to save tokens.
+- Removed a weird "til" variable from the tool code which may be either a leftover or a typo that happened to not break anything.
+- Hammers now break their tiles in the same way pickaxes and axes do, but with a faster speed modifier. (Saved a lot of tokens)
+- Shadow orbs now replace themselves with an ebonstone wall when broken, to improve the illusion of multiple tile layers.
+- Furniture tiles such as workbenches, furnaces, and torches now break walls if the player tries to place them over one.
+
+Stat counts: 8191/8192 tokens, 41232/65535 chars, 99.96% compressed size
+
+1.4.1b: E to jump
+- Added the E key as an alternate jump.
+
+Stat counts: 8192/8192 tokens, 41232/65535 chars, 99.96% compressed size
+
+1.4.1c: 0.2.5 sub() bugfix
+- Fixed the Terra logo, custom player sprites, and Plantera being unable to load due to sub() reverting to its pre-0.2.4 behaviour.
+
+Stat counts: 8185/8192 tokens, 41239/65535 chars, 99.94% compressed size
+
+1.4.2: EXTREME quality of life and polish update.
+- Saved 87 (!!) tokens using more false->null style optimisations, also replacing `foreach(x)` with `next, x`, `rnd(x)` with `rnd"x"` (this became an issue once 0.2.5 released) and so on. (8105 tokens)
+- Replaced the dedicated sky tile with tile zero, as tile zero isn't even drawn anyway.
+- So, now I have a spare sprite and a significant amount of tokens. Why does this keep happening?
+- Moved the Shadow Orb counter to the player save, meaning you should no longer get duplicate items from them after reloading unless you break more than 3 orbs. (8115 tokens)
+- (For @EpsiCron ) Mob drops with a negative amount are now guaranteed, this means beetles now always drop their husks. (8117 tokens)
+- Some more optimisations involving unpack+split. (Oh gosh it keeps going) (8104 tokens)
+- Treetops now render in front of tiles again. (8125 tokens)
+- The state of the mouse cursor is now remembered across sessions. (8141 tokens)
+- Optimised Plantera's phase 2 palette. (8128 tokens)
+- Fixed the player's trashy tile step-up implementation.
+- Mobs now drop through platforms if the player is below them. (8144 tokens)
+- World time is now saved in the player save file. (8150 tokens)
+- Edited Corruption Grass texture to look nicer.
+- Changed keyboard controls to WASD+Space.
+- Added mouse controls for the inventory. (8191 tokens)
+- Optimised mob data code. (8178 tokens)
+- PICO-8 0.2.5c released, fixing the aforementioned `rnd"x"` issue
+- Platforms are no longer offset while moving if mouse controls are enabled.
+- (Sorry speedrunners...) Improved wall blockswap so furniture tiles are no longer overpowered hammers. (8174 tokens)
+- (For @CrownDeluxe and those who lost important items) Item trashing has been modified to help prevent accidental trashing: Now you can only trash an item after pressing 🅾️/Z/Click to first make it "hover" next to the hotbar, THEN you can trash it with ❎/X/Right Click. If the hovering slot is empty, you can recover trash instead by pressing ❎/X/Right Click. (8180 tokens)
+- E has been added as an inventory key, and removed old functionality for left/right keys to hover items, as the left key moves to the crafting side. (8185 tokens)
+- Hornets now shoot stingers when the player is in line of sight.
+- Updated to the latest pd_rotate() function from @TheRoboZ to save tokens. This also allows rotated sprites to be scaled!
+- EoC and Ocram are now bigger.
+- Ocram's hitbox is more reasonably sized relative to his body, and his servants now spin.
+- Fixed many bugs introduced while changing and optimising things.
+- Bosses are now summoned randomly on either the left or right side of the player. (8190 tokens)
+- You can now craft 2 Potions using 3 spare Life Crystals at a Cursed Forge.
+- A sound effect now plays when you craft things. (8189 tokens)
+- Fixed the stray pixel that would appear on the large slimes' squash frame after loading a custom character.
+- Fixed the occasional flickering of the digging overlay and moved it to be behind all entities. (8191 tokens)
+- Digging overlay now has only 3 frames to better match the digging animation and sounds. (4 sprites)
+- (For @CrownDeluxe ) Added Sliver Brick, a smoother white block. (3 sprites)
+- Added one new enemy: the Spiked Jungle Slime! (boooooo!) They're like slimes, but they shoot at you! (8194 tokens, 1 sprite)
+- Ocram and Plantera's health have been buffed a little.
+- Added Tentacle Spike as a rare drop from Eaters of Souls, because the Corruption seemed lacking in content. (8189 tokens)
+- Asymmetrical item sprites such as axes have been flipped so they match Terraria, now the lighting on items in the world comes from above rather than below.
+- (For controller users) Added a basic failsafe for the crash when an invalid player file is loaded (e.g. a world file), by resetting the cart if the player's health is not a number. (8192 tokens)
+- Optimised health bar rendering and re-implemented vertical scrolling on the background because I accidentally removed it. (8167 tokens)
+
+Character Editor changes:
+- Added 3 new clothing styles.
+- Each clothing and hair style option now has a name.
+- Grey and Light Grey are no longer usable as clothing colours because that was weird, considering the player's skin colour is grey.
+
+Look how far we've come since the very first version:
+[hidden]
+[#terra_1cart-0#]
+[/hidden]
+
+Stat counts: 8167/8192 tokens, 41386/65535 chars, 99.82% compressed size
+
+1.4.2b: A couple of bugfixes and a use for campfires
+- Some more token optimisations. (8147 tokens)
+- Silver Brick is now actually a block. (oops)
+- Fixed platform placement being broken. I was checking the target tile before offsetting it instead of after.
+- Reverted a token optimisation that accidentally removed mouse-based block placement. It appears this also fixed diagonal mining without the mouse.
+- Mobs can no longer spawn within a 17x15 tile rectangle centred on a campfire. Due to this, campfires are now a bit more expensive to craft, requiring 3 torches instead of 1. (8190 tokens)
+
+Stat counts: 8190/8192 tokens, 41420/65535 chars, 100% compressed size
+
+1.4.3 (The NEW final final update!): Weapon updates, armour, and performance improvements, oh my! // A new boss fight, some weapon overhauls and a few fixes!
+- Wand of Sparking and Flamethrower's flame projectiles now have piercing, and as such their damage has been lowered.
+  - Their projectiles are no longer affected by gravity.
+- Saved a ridiculous amount of tokens by changing a portion of the mob code to remap _ENV. (8018 tokens)
+  - This may break some things. Please let me know if you find any weird mob behaviour.
+- Fixed boss music being broken after the _ENV change. (8031 tokens)
+- Reverted a token-saving change to free up the first sprite slot. (8037 tokens)
+- Gave the Terra Blade its (pre Terraria 1.4.4) projectile and removed the unused `ammoid` variable. (8083 tokens)
+- Weapons now have a scale modifier. (8117 tokens)
+  - Due to this, many weapons have been made larger. 
+- Tried a minifier. Results: 8108 tokens, 35818 chars and 88% compressed size. We're doing pretty ok!
+- Changed projectile gravity and infinite ammo to be determined by flag 0-1 rather than sprite id and autoswing.
+  - If flag 0 is set, the fired projectile will be affected by gravity.
+  - If flag 1 is set, the item will not be consumed upon firing.
+- Fixed the day-night cycle palette fade so it actually happens again. (8123 tokens)
+- Changed how summon items work so they don't use the autoswing value to store the required music.
+  - Reformat `eoc:53` to `eoc-53`. (8136 tokens)
+- Fixed EoC and Ocram's phase 2 transition animations. (8138 tokens)
+- Fixed underground mobs spawning on certain surface tiles for the rest of the session after going underground.
+- Now uses the new default out-of-bounds map value to save a few tokens.
+  - This should also reduce the performance impact of map checks, which happen quite frequently.
+- Eaters of Souls are now larger. (8116 tokens)
+- When the inventory is closed, unselected hotbar slots will progress off-screen to reduce screen clutter.
+- The inventory slots are now culled to improve performance when the player has a lot of different items. (8164 tokens)
+- A few graphical updates.
+  - Black has been replaced with its corresponding secret palette colour on the lightest two palettes.
+  - Some mobs and items have had minor changes.
+  - Most walls and a couple of blocks have been changed.
+- Added a defence system for the player, and three different armour items to craft throughout a playthrough. (8189 tokens)
+  - These function from the inventory, the same way Hermes Boots do. Only the strongest armour piece counts toward defence.
+  - Some enemy and boss stats have been increased as a result.
+- Optimised inventory drawing code for tokens. (8172 tokens)
+  - The quantity of items in the "hovering" slot and the trash slot are now displayed.
+- The crafting screen now displays the items required for the selected recipe. (8187 tokens)
+
+Stat counts: 8187/8192 tokens, 41136/65535 chars, 99.88% compressed size
+I still have no clue why it's still possible to fit more in, but whatever.
+
+1.4.3 stealth fixes: oops
+- Fixed EOC and Ocram being completely broken.
+- Fixed Plantera dropping Gold Armour, with Ocram dropping her Golden Seed instead.
+- Fixed the trash slot drawing blue parts of items as red
+
+Stat counts: 8173/8192 tokens, 41069/65535 chars, 99.76% compressed size
+
+1.4.4 - The Are We There Yet? Update (aka The Quality Presentation Update)
+Code-golfing Extreme! PLUS ULTRA!
+With feedback and ideas from Yeggplant (YouTube)
+
+- Small performance and token optimisation for when collisions are happening between blocks and mobs/player. (8160 tokens)
+- Bouncing enemies (Demon Eyes, Bats, etc...) now have a minimum bouncing velocity so they stop vibrating against walls.
+- Saved tokens in inventory item updating using _ENV. (8161 tokens)
+- Saved tokens in crafting. (8166 tokens)
+- Added a boss health bar. (8208 tokens)
+- Saved a massive amount of tokens in the mob creation function using _ENV. (8159 tokens)
+- Added health values to the boss bar. (8170 tokens)
+- Added the sun and moon to the sky. (8191 tokens)
+- More _ENV token savings.
+- Added mob death/damage particles and tile breaking particles. (8184 tokens)
+- Adjusted fighter AI physics to be more accurate.
+- Enemies hit by projectiles are now knocked back in its movement direction instead of away from its centre. (8177 tokens)
+- Tiles needing support now spawn particles when the tile beneath them is removed. (8190 tokens)
+- Finally optimised the tokens tokens in time-based light levels. (8149 tokens)
+- ( Suggestion: @lastofavari ) Added a menu option to mute the music. (8187 tokens)
+	- This persists across sessions.
+- Fixed the Terra Blade's projectile crashing the game after the past _ENV changes. (8190 tokens)
+- Saved tokens by using strings for `sfx()` calls. (8174 tokens)
+- Moved many sound effects to a `ssfx()` (semi-sfx) function, allowing multiple smaller sounds to be packed together.
+- Added new sounds for Flamethrower and Wand of Sparking, and picking up items. (8190 tokens)
+- Fixed an issue where running out of a stack of items would cause the next slot to be used immediately, leading to unintentional block placement or consumable usage. (8188 tokens)
+- Reintroduced the `add_projectile()` function to save tokens for the Terra Blade's projectile.
+- Saved tokens by replacing calls to `fget(mget())` to a merged `fmget()` function. (8158 tokens)
+- The surface background is no longer drawn while the player is underground.
+- Underground and Caverns layers now have their own parallax backgrounds. (8190 tokens)
+	- As with the surface background, these are not drawn while the player is on the surface.
+- Swapped ammo sprite and velocity values so that ammo items don't have insanely high use durations. (some were over 200 frames!)
+- Removed the check to not drop hearts for projectiles, as they have been changed to despawn on hit rather than die. (8189 tokens)
+- [REVERTED] Can no longer change items or open the inventory while using an item, to prevent weirdness when changing items mid-swing.
+- Fixed an issue where changing items while using another item would cause the first item's swing animation to break. (8191 tokens)
+	- Previously, changing items to a Minishark while using a Potion (for example) would cause the Potion to orbit the player rapidly.
+- Fixed the world/player saving screen using the current display palette black (which is dark brown in the lighter palettes) instead of forcing the normal palette black.
+- A different sound effect now plays when an enemy is defeated. (8192 tokens)
+- Fixed various oversights, and a few issues arising from previous ENV changes.
+- Music now reserves the first two audio channels, which should reduce instances of sound effects interrupting the music. (8189 tokens)
+- Fixed some major issues with the crafting system that caused it to allow crafting when it shouldn't have, also fixing the "need more materials" pop-up. (8187 tokens)
+	- For example, you could pick an item up, then any recipe using multiple items would not consume the held item. Single-item recipes would simply not craft the item.
+	- Same goes for holding the craft key: if it was a multi-ingredient recipe, it would just keep crafting as long as one of the items exists.
+- Fixed the infamous Flying Terra Blade bug, which caused any non-ranged item with a scale factor over 1 to fly away from the user's hand while the inventory was open. (8183 tokens)
+- Fixed a new bug where the player's hurt sounds wouldn't play. (8192 tokens)
+- Adjusted Forest Day music channels to hopefully avoid most annoying sound effect interruptions.
+- Refactored the inventory item drawing to use just the small border sprite for both sizes, now there's three more sprites available. (8180 tokens)
+- Enemies can now have a scaling factor applied in their data. (8185 tokens)
+  - Blue and Black Slimes now use a scaled-down version of the large slime sprites to free up two more sprites.
+  - Merged previously code-driven enemy scale adjustments into their data strings. (8173 tokens)
+- Made melee weapons use their value as a knockback multiplier.
+  - Some weapons now deal more knockback than others.
+- Made ammo items use their scale as pierce value.
+  - Gel-based weapons no longer have infinite pierce. Gel has 2 pierce and the Gel Booster has 3.
+- (Yeggplant on YouTube) Added a new melee weapon, an upgrade for the Hermes Boots, and three new types of ammo. (8188 tokens)
+  - Two of these ammo items are piercing arrows and bullets.
+- Fixed player hurt sounds not working when damaged by an enemy. (8189 tokens)
+- Fixed a missing sprite flag on the campfire which caused it to remain floating when the tile below it was broken.
+- The Furnace and Cursed Forge now emit light. They are on fire, after all!
+- Certain items with no use function can no longer be used, to prevent items which use the usetime and scale stats for other purposes from making the screen flash.
+- Tools now use their value parameter as digging speed. Higher is faster, defaults to 1. (8191 tokens)
+  - Most tools have now been made even faster depending on their tier.
+  - Previously, this was dependant on the item's use speed: Three swings to break a tile. Now it's three swings divided by the item's value parameter, so value three means one swing per block.
+- Removed the E variable from the player and enemy collisions code, and replaced it with break. (8170 tokens)
+- Player now moves on X directly after checking for X collisions to avoid clipping into corners and stopping.
+- Implemented a more token-efficient way of determining if a mob can shoot stingers. (8159 tokens)
+  - `if del(list_copy,id) then` is a way to do Python's `if id in list:` if the list you're working on can be safely modified. In this case, the list is recreated every time.
+- Item amounts 1000 and up now display as 1k, 2k, etc... (8170 tokens)
+- Found some places where I forgot to replace things. (8159 tokens)
+- Fixed inconsistencies with scaled items' collision box and visuals. They are now held in the player's hand properly.
+- Boots can now modify the player's jump height. (8174 tokens)
+- Torches, Campfires, Furnaces, and Cursed Forges now emit particles. (8191 tokens)
+- Redrew several sprites, including Dirt, Mud, and Plantera's Bulb.
+- Fixed a memory leak where flame particles were being constantly created while the inventory was open.
+- Optimised tokens in the tree creation function.
+- Restored the block dithering between biomes that was lost at some point. No more straight lines between biomes! (8184 tokens)
+  - This is not retroactive, so worlds generated in previous versions will still have straight biome edges.
+  - Also, optimised tokens. Of course.
+- Rearranged the map data to make better use of space, and expanded the underground parallax backgrounds to reduce map calls for full screen coverage. (8171 tokens)
+- Removed the pause button blocking poke in the genprint function.
+- Various adjustments and fixes to world generation, so there can be more varied terrain. (8165 tokens)
+  - Fixes an edge case where tables could appear in the Corruption.
+- Slimes should more easily be able to jump past tiles they run into. (8163 tokens)
+- The fact that I'm still finding token savings is incredible.
+- Rewrote the furniture tile automatic background walls code. (8160 tokens)
+- Fixed a new bug where the pause menu would appear while pressing enter on the saving screens.
+- Ores now generate a little further down, to incentivise getting the earlier tiers before going for gold. (8163 tokens)
+- Adding a tribute...
+- Removed the check to see if the Underground parallax should be drawn since PICO-8 handles not rendering off-screen maps anyway. (8183 tokens)
+- Finished adding tribute (8192 tokens)
+- Rebalanced a few stats:
+  - Ocram and Plantera have slightly more health to compensate for the new ammo types.
+  - Nerfed Minishark and Dogblaster a bit to bring them back and make it more viable to choose literally any other weapon over them.
+  - Minor adjustments to a few other weapons.
+- The itch.io versions have a new icon, except for the MacOS version because I don't have a Mac and can't be bothered working it out.
+  - The Windows downloads have the icon integrated into the .exe files.
+  - The Linux and Raspberry Pi downloads include the icon's PNG file, you should be able to set it as the icon if I remember correctly.
+  - The Mac downloads include the icon's PNG file, in case you can use that somehow. I dunno, the only Macs I've ever used are the blue CRT-looking ones.
+
+Character Editor:
+- Fixed the hair colour icon always being green, regardless of the selected hair colour.
+
+Known issues:
+- The performance drops to 30fps while the player is standing around where the underground background starts. Performance returns to normal after going further underground.
+
+Stat counts: 8192/8192 tokens, 40909/65535 chars, 99.96% compressed size.
+
+###1.4.4: The Quality Presentation Update (aka The Are We There Yet? Update)
+
+Main Changes:
+- Added a boss health bar.
+- Added the sun and moon to the sky, now you can tell roughly what the time is.
+- Added particles for damaging mobs and breaking tiles.
+- ( Suggestion: @lastofavari ) Added a menu option to mute the music.
+	- This persists across sessions.
+- ( Suggestion: Yeggplant ) Added a new melee weapon, an upgrade for the Hermes Boots, and three new types of ammo. (8188 tokens)
+  - Two of these ammo items are piercing arrows and bullets.
+- Underground and Caverns layers now have their own parallax backgrounds.
+- Added new sounds for Flamethrower and Wand of Sparking, and picking up items.
+- Most tools new have a speed multiplier on top of their base speed.
+  - The Demonite Pickaxe, for example, is now significantly faster!
+- Adjusted physics for most normal enemies other than slimes to be more accurate/less janky.
+- Fixed an issue where running out of a stack of items would cause the next slot to be used immediately, leading to unintentional block placement or consumable usage.
+- Fixed an issue where changing items while using another item would cause the first item's swing animation to break.
+  - For example, changing items to a Minishark while using a Potion would previously cause the Potion to orbit the player rapidly.
+- Fixed some major issues with the crafting system that caused it to allow crafting when it shouldn't have, also restoring the "need more materials" pop-up.
+  - For example, you could pick an item up, then any recipe using multiple items would not consume the held item. Single-item recipes would simply not craft the item.
+  - Same goes for holding the craft key: if it was a multi-ingredient recipe, it would just keep crafting as long as one of the items exists.
+- World generation has been modified, and the transition between biomes is no longer a straight line. (These apply only to new worlds)
+- Many other bugfixes and improvements!
+
+Character Editor:
+- Fixed the hair colour icon always being green, regardless of the selected hair colour.
+
+Known issues:
+- The performance drops to 30fps while the player is standing around where the underground background starts. Performance returns to normal after going further underground.
+
+---
+
+Stat counts: 8192/8192 tokens, 40909/65535 chars, 99.96% compressed size.
+
+
+
+1.4.4b - The 1.4.4 bugfix
+- Shadow Orbs in the inventory are now placeable.
+- Changed the priority of automatic background walls. Now, they prefer left/right, then up/down, then the diagonals. Previously, they checked surrounding tiles in left-to-right reading order.
+  - This should make automatic background walls more pleasing to look at, avoiding cases where a wall uses its diagonal neighbor over the four tiles actually touching it.
+  - @ oh lord he bacc - This should solve that Shadow Orb "duplication" thing, except when placing the torch to the side or when there are no walls next to the torch.
+
+Stat counts: 8192/8192 tokens, 40927/65535 chars, 99.96% compressed size.
+
+1.4.5m - The Gacha Update!
+That's right, Terra's a mobile gacha game now! Pay $100 to get a random effect from the Gacharium!
+- Added the Gacharium, a mystical tome of powers unknown.
+  - It costs [100] dollars to [use this item] for [one time].
+- Using the Gacharium causes a random effect to occur.
+- Enemies now drop gold based on their health.
+- Crafting a recipe now gives the player gold in addition to the recipe's output.
+- If the player dies, they drop half their gold.
+  - Note that if they die too many times, gold from earlier deaths will be lost to the item limit.
+- [removal] Removed saving. It represents what a waste live service games are, cause when the servers inevitably go down, all your stuff's gone as well.
+- [removal] Removed mouse controls. You don't need them in a mobile game anyway!
+- [removal] Enemies no longer drop healing hearts.
+
+Stat counts: 8140/8192 tokens, ? /65535 chars, ? % compressed size.
+
+
+
+
+Stat counts: 8183/8192 tokens, 40782/65535 chars, 99.69% compressed size.
+
+
+
+
+terra save manager: read persisting map data from upper memory, use hook to load map. how will players work?
+
+
+
+--todo
+charedit hairstyle icon colour is stuck on green
+effect on craft: item moves to right side -> confirmation for crafting
+can blockswap life crystals with torches?
+
+- blockswap happens even when stack runs out without re-pressing place key
+? light cycle by cos(time/24000)
+
+
+scrapped 1.4.3 twins version
+- Changed summon items to support spawning multiple mobs separated by `/`: `reti/spaz-53`
+- Yet more _ENV trickery to save yet more tokens now that I know how it works better.
+- Added The Twins! Progression is kinda backwards (Ocram -> Plantera -> Twins) but whatever.
+- Now uses the new default out-of-bounds map value to save a few tokens.
+- Eaters of Souls are now larger.
+
+- reorder progression:
+- twins summon from demonite+silver+lens
+- summon twins, get souls to make cursed forge
+- make budding seed from leafy seeds at cursed forge
+- summon plantera, get corrupted symbol (ocram summon?)
+- make ocram summon
+- summon ocram, get soul of blight / Terra shard
+- make terrablade+dogblaster
+
+breaks:
+souls of blight become souls of sight
+ocram summons become twins sumons
+
+summon recipe
+
+check plantera - border is black, fix offsets
+
+reset loadplayer, time
+
+
+fix trashslot
+
+
+split2:
+orbsmash maybe isn't synced
+crafting no workie
+diagonal mining no workie
+unpdate for 1.4.3 changes
+
+ideas:
+save file browser? using the new ls() and pwd functionality
+could remove defence and adjust health accordingly
+
+
+
+MULTIPLAYER 1.0: Play with your friend(s)!
+- This is an alternative version, if I could fit it into the main cart I would, but unfortunately I don't think that's possible right now.
+- Now there are 2 players!
+- Saving and loading have been removed
+- Worldgen now generates 30 life crystals and more ores.
+- Bosses have about +35% health. Those with a second phase transition sooner relative to that value.
+- The respawn timer is back, but reduced slightly. (Can't let you cheese the bosses that easily!) Now you *only* have to wait 8 seconds instead of 10.
+- In this version you can drop items one at a time by picking them up in the inventory (so they're "floating" next to the inventory bar) and pressing the trash key.
+- In theory you can have up to 8 players with this, I kinda want to see that. Would have to implement adaptive screen layouts though.
+
+
+ANSWER ME THIS:
+ how is  (i.x-cos(ba)*sight)/8 sight+=1
+ faster than  i.x/8-cos(ba)*sight sight+=0.125
+OF COURSE:
+ because d was not divided by 8 to compensate
+
+local perfmon=stat(1)
+
+printh(perfmon.." "..stat(1),"@clip")
+
+
+versions:
+- singlecart (1.0 - 1.2.1b)
+- multicart (scrapped, approx 1.1c equivalent)
+- jo560hs music (1.2.2 - 1.3.1)
+- sup3r (1.3.2 - 1.3.3c)
+- hermes (1.3.4 - 1.3.5)
+- paste (1.4)
+- pastemouse (1.4.1 - 1.4.1b)
+- split (multiplayer, approx 1.4.1b equivalent)
+- next (1.4.1c - 1.4.3)
+- real (1.4.4)
+-- snowy (1.4.2 snow biome version)
+-- reti (Adds the twins boss)
+-- mget-reti ()
+- reorder (1.4.2 twins update)
+
+contributers:
+- jo560hs (music)
+- sup3raw3som3gam3r (mob optimisations and ideas)
+- shy (keyboard stuff)
+
+todo ideas:
+plant: enrage if biome music not jungle
+
+add a terminal velocity
+right-align inv-item amounts
+
+bugs:
+platform collisions are wonky, token limit prevents fixing
+
+To Do: A list of things
+- investigate performance issues (too many mobs? rendering too many mobs? is it even in the update loop?)
+- make craft select stay on the same recipe when list changes
+
+
+plays when svings video:
+2021-12 4736
+2022-01 7314
+2022-02 3184
+
+Total: 15234
+
+plays after chippy's video:
+
+(oh my not even a day later) Total: 20511  20546  20711
+40000 after just over a week... sfbknbegawsnhklawsehfuio
